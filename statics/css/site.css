@@ -1,0 +1,61 @@
+@import url(//at.alicdn.com/t/font_493244_jkvjfltzg3gi7ldi.css);
+/*  下面的为备用图标,上线后不用 */
+@import url(//at.alicdn.com/t/font_493283_9blhbm8c1gz7u8fr.css);
+
+/* 样式初始化 */
+body{
+	background-color: #fff;
+	font-size: 14px;
+}
+ul,li{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.container{
+	font-size: 14px;
+}
+
+/* 课程列表顶部选项卡 */
+.mint-navbar .mint-tab-item{
+	background-color: #fff;
+	border-bottom:1px solid #E3E3E3;
+	padding:0;
+	height:50px;
+}
+.mint-tab-item-label{
+	height:100%;
+}
+/* 选项卡激活状态样式 */
+.mint-navbar .mint-tab-item.is-selected{
+	border-bottom: 3px solid #FF9800;
+}
+/* 课程详情页图片轮播小圆点 */
+.mint-swipe-indicators .mint-swipe-indicator{
+	opactiy:0.5;
+}
+/*小圆点圆点激活状态*/
+.mint-swipe-indicators .mint-swipe-indicator.is-active{
+	background-color:#FF9800;
+	width:15px;
+	border-radius:5px;
+	opacity: 1;
+}
+/* 段落缩进 */
+.text-idt{
+	text-indent: 2em;
+}
+/*单个列表项顶部边框*/
+.mui-table-view:before{
+	height:0;
+}
+/*单个列表项底部边框*/
+.mui-table-view-cell:after{
+	left:0;
+}
