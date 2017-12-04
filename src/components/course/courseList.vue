@@ -12,17 +12,17 @@
 			<div class="course-list">
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell mui-media" v-for="item in courseList">
-						<router-link to="/course/courseInfo">
-							<img class="mui-media-object mui-pull-left" src="../../../statics/imgs/course01.jpg">
-							<div class="mui-media-body">
-								<p class="course-name">{{item.courseName}}</p>
-								<span class="author">{{item.author}}</span>
-								<div class="buy">
-									<span class="price">&yen;{{item.price}}</span>
-									<button class="buy-btn">立即购买</button>
+							<router-link v-bind="{to:'/course/courseInfo/'+item.id}" >
+								<img class="mui-media-object mui-pull-left" src="../../../statics/imgs/course01.jpg">
+								<div class="mui-media-body">
+									<p class="course-name">{{item.courseName}}</p>
+									<span class="author">{{item.author}}</span>
+									<div class="buy">
+										<span class="price">&yen;{{item.price}}</span>
+										<button class="buy-btn">立即购买</button>
+									</div>
 								</div>
-							</div>
-						</router-link>
+							</router-link>
 					</li>
 				</ul>
 			</div>
@@ -30,22 +30,28 @@
 	</div>
 </template>
 <script>
+// 引入中转站(非父子组件传值)
+import {vm} from "../../kits/vm.js";
+
 	export default{
 		data(){
 			return {
 				selected:true,
 				courseList:[
 					{
+						id:1,
 						courseName:'卓有成效的管理者-第六章第...',
 						author:'包政',
 						price:365.00
 					},
 					{
+						id:2,
 						courseName:'卓有成效的管理者-第六章第...',
 						author:'包政',
 						price:365.00
 					},
 					{
+						id:3,
 						courseName:'卓有成效的管理者-第六章第...',
 						author:'包政',
 						price:365.00
@@ -54,7 +60,10 @@
 			}
 		},
 		methods:{
-
+			// sendCourseId(id){
+			// 	var id = id;
+			// 	vm.$emit('transfer',id);
+			// }
 		},
 		created(){
 		},

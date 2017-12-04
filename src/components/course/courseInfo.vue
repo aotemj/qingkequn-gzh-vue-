@@ -10,7 +10,7 @@
 				<span class="price">&yen;{{bookInfo.price}}</span><span class="quantity">{{bookInfo.quantity}}已买</span>
 			</div>
 		</div>
-
+		<div>{{id}}</div>
 		<!-- 图文介绍 -->
 		<div class="introduce">
 			<h5 class="header">图文介绍</h5>
@@ -37,9 +37,14 @@
 <script>
 	/*引入swipe(轮播子组件)*/
 	import swipe from "../subcom/swipe.vue";
+
+	//引入中转站(非父子组件传值)
+	import {vm} from "../../kits/vm.js";
+
 	export default{
 		data(){
 			return {
+				id:-1,
 				// 假数据
 				courseImgList:[
 					{
@@ -61,7 +66,9 @@
 				}
 			}
 		},
-		created(){},
+		created(){
+			this.id = this.$route.params.courseId;//获取路由参数
+		},
 		methods:{},
 		components:{
 			swipe

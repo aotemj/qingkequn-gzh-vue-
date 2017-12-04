@@ -35,7 +35,7 @@ import personalCenter from "./components/personal/personalCenter.vue";//个人�
 import personalInfo from "./components/personal/personalInfo.vue";//个人信息
 import learningRecord from "./components/personal/learningRecord.vue";//学习记录
 import myClass from "./components/personal/myClass.vue";//我的班级
-
+import articleList from "./components/fuli/article.vue";//轻友福利文章列表
 
 /*实例化vue-router*/
 var router = new VueRouter({
@@ -43,12 +43,13 @@ var router = new VueRouter({
 	routes:[
 		{path:'/',redirect:"/course/courseList"},
 		{path:'/course/courseList',component:courseList},
-		{path:'/course/courseInfo',component:courseInfo},
+		{path:'/course/courseInfo/:courseId',component:courseInfo},
 		{path:'/course/myCourse',component:myCourse},
 		{path:'/personal/personalCenter',component:personalCenter},
 		{path:'/personal/personalInfo',component:personalInfo},
 		{path:'/personal/learningRecord',component:learningRecord},
-		{path:'/personal/myClass',component:myClass}
+		{path:'/personal/myClass',component:myClass},
+		{path:'/fuli/articleList',component:articleList}
 	]
 });
 
