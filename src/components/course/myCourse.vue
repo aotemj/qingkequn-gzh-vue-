@@ -2,11 +2,14 @@
 	<div>
 		<!-- 我的课桌(mint-ui) -->
 		<div class="course">
-			<mt-navbar v-model="selected">
-			  <mt-tab-item id="2"><a class="navbar" href="#">精读</a></mt-tab-item>
-			  <mt-tab-item id="3"><a class="navbar" href="#">实践</a></mt-tab-item>
-			</mt-navbar>
-
+			<!-- 表头 -->
+			<div class="myCourseTitle">
+				<ul>
+					<li v-bind:class="{'is-selected':item.status}" v-for="(item,index) in courseTitleList" v-on:click="checked(index)">
+						<span>{{item.title}}</span>
+					</li>
+				</ul>
+			</div>
 			<!-- 我的课程列表 -->
 			<div class="course-list">
 				<ul class="mui-table-view">
@@ -32,7 +35,16 @@
 	export default{
 		data(){
 			return {
-				selected:true,
+				courseTitleList:[//顶部列表表头
+					{
+						title:"精读",
+						status:true
+					},
+					{
+						title:"实践",
+						status:false
+					}
+				],
 				courseList:[
 					{
 						courseName:'卓有成效的管理者-第六章第...',
@@ -50,7 +62,13 @@
 			}
 		},
 		methods:{
-
+			/*切换已买课程列表*/
+			checked(id){
+				this.courseTitleList.forEach((item)=>{
+					item.status=false;
+				})
+				this.courseTitleList[id].status=true;
+			}
 		},
 		created(){
 		},
@@ -59,6 +77,29 @@
 	}
 </script>
 <style scoped>
+/*顶部表头样式*/
+.myCourseTitle{
+	height:45px;
+	line-height: 45px;
+	font-size: 14px;
+	/*background-color: green;*/
+}
+.myCourseTitle ul li {
+	float: left;
+	width:50%;
+	text-align: center;
+	border-bottom:1px solid #E3E3E3;
+	height:45px;
+}
+.myCourseTitle ul li span {
+	display:inline-block;
+	height:45px;
+}
+.myCourseTitle ul li.is-selected span {
+	border-bottom:2px solid #ff9800;
+	color:#ff9800;
+}
+
 /*navbar选中样式*/
 .mint-navbar .mint-tab-item.is-selected{
 	border-bottom:1px solid #E3E3E3;
