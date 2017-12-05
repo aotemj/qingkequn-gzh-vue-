@@ -27,9 +27,6 @@ Vue.use(VuePreview);
 /*引入flexible.js(rem适配)*/
 import "../statics/js/flexible.js";
 
-/*引入修改组件标题js*/
-import {setTitleHack} from './kits/utils.js';
-
 /*导入路由*/
 import courseList from "./components/course/courseList.vue";//课程列表
 import courseInfo from "./components/course/courseInfo.vue";//课程详情
@@ -76,7 +73,7 @@ var router = new VueRouter({
 			}
 		},
 		{
-			path:'/personal/personalInfo',
+			path:'/personal/personalInfo/:personId',
 			component:personalInfo,
 			name:"个人信息",
 			meta:{

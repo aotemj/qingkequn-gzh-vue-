@@ -92,6 +92,7 @@
 	height:45px;
 }
 .myCourseTitle ul li span {
+	padding:0 12px;
 	display:inline-block;
 	height:45px;
 }
@@ -139,12 +140,12 @@
 .learn-btn{
 	width:2.21334rem;
 	height:.7467rem;
-	line-height: 15px;
+	line-height: 12px;
 	border-radius:30px;
 	background-color: #8BC34A;
 	color:#fff;
 	border:none;
 	float: right;
-	margin-top:7px;
+	margin-top:10px;
 }
 </style>

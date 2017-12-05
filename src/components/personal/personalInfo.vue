@@ -9,22 +9,38 @@
 		<div class="person-info">
 			<ul class="mui-table-view">
 				<li class="mui-table-view-cell">
-					<a class="mui-navigate-right"><span>头像</span><span class="photo" v-bind:style="{background:'url('+personInfo.img+') center center',backgroundSize:'cover'}"></span></a>
+					<span class="mui-navigate-right"><span>头像</span><span class="photo" v-bind:style="{background:'url('+personInfo.img+') center center',backgroundSize:'cover'}"></span></span>
 				</li>
 				<li class="mui-table-view-cell">
-					<a class="mui-navigate-right"><span>昵称</span> <span class="nickname" v-text="personInfo.nickname"></span></a>
+					<span class="mui-navigate-right"><span>昵称</span> <span class="nickname" v-text="personInfo.nickname"></span></span>
+
+				</li>
+				<li class="mui-table-view-cell phone-li">
+					<span v-on:click="verifyPhone" class="mui-navigate-right"><span>手机号<span class="necessary">*</span></span></span>
+					<div class="shade">
+						<div class="bind-phone-box">
+							<div class="phone-title">绑定手机</div>
+							<div class="phone-content">
+								<input class="phone-num" type="text" placeholder="请输入手机号码">
+								<div class="verify-box">
+									<input class="verify-num" type="text" placeholder="请输入验证码"><input class="verify-btn" type="button" value="获取验证码">
+								</div>
+							</div>
+							<div class="phone-submit">
+								<input type="button" value="取消">
+								<input type="button" value="确定">
+							</div>
+						</div>
+					</div>
 				</li>
 				<li class="mui-table-view-cell">
-					<a class="mui-navigate-right"><span>手机号 <span class="necessary">*</span></span></a>
+					<span class="mui-navigate-right"><span>性别</span></span>
 				</li>
 				<li class="mui-table-view-cell">
-					<a class="mui-navigate-right"><span>性别</span></a>
+					<span class="mui-navigate-right"><span>生日</span></span>
 				</li>
 				<li class="mui-table-view-cell">
-					<a class="mui-navigate-right"><span>生日</span></a>
-				</li>
-				<li class="mui-table-view-cell">
-					<a class="mui-navigate-right"><span>地址</span></a>
+					<span class="mui-navigate-right"><span>地址</span></span>
 				</li>
 			</ul>
 		</div>
@@ -52,6 +68,15 @@ import {vm} from "../../kits/vm.js";
 					"address":""//地址
 				}
 			}
+		},
+		created(){
+
+		},
+		methods:{
+			// 手机号验证
+			verifyPhone(){
+
+			}
 		}
 	}
 </script>
@@ -61,7 +86,7 @@ import {vm} from "../../kits/vm.js";
 		height:1.12rem;
 		line-height: 1.12rem;
 		background-color: #FFFEDB;
-		padding-left:.54rem;
+		padding-left:12px;
 	}
 	.tips p {
 		color:#CC972F;
@@ -69,6 +94,10 @@ import {vm} from "../../kits/vm.js";
 	.mui-navigate-right{
 		display: inline-block;
 		position: relative;
+		width:100%;
+	}
+	.mui-table-view-cell{
+		overflow: visible;
 	}
 	.mui-navigate-right span:first-of-type{
 		color:#B0B0B0;
@@ -86,6 +115,9 @@ import {vm} from "../../kits/vm.js";
 		background-size:cover;
 		background-repeat:round;
 	}
+	.mui-table-view-cell .mui-navigate-right:after{
+		margin-right:0px;
+	}
 	/*隐藏第一行小箭头*/
 	.mui-table-view-cell:first-of-type .mui-navigate-right:after{
 		display:none;
@@ -98,6 +130,56 @@ import {vm} from "../../kits/vm.js";
 	/*必填项*/
 	.necessary{
 		color:red !important;
+	}
+	.shade{
+		position: fixed;
+		left:0;
+		top:0;
+		width:100rem;
+		height:100rem;
+		background-color: rgba(0,0,0,.4);
+		z-index: 999;
+	}
+	/*手机号验证*/
+	.bind-phone-box{
+		color:14px;
+		padding:20px;
+		text-align: center;
+		width:9rem;
+		height:7rem;
+		background-color: #fff;
+		border-radius:10px;
+		position: fixed;
+		left:50%;
+		top:50%;
+		transform:translate(-50%,-50%);
+		z-index: 999;
+	}
+	/*绑定手机内容*/
+	.phone-content{
+		margin-top:15px;
+		padding:0;
+	}
+	.phone-content input{
+		height:30px;
+		border-radius: 5px;
+		font-size: 14px;
+		margin:0;
+	}
+	.verify-box{
+		width:100%;
+		padding:0;
+		margin-top:15px;
+	}
+	/*验证码输入框*/
+	.verify-box .verify-num{
+			width:60%;
+			display:inline-block;
+
+	}
+	.phone-content .verify-btn{
+		margin-left:14px;
+		width:35%;
 	}
 	/*提交并付款*/
 	.buy-btn{

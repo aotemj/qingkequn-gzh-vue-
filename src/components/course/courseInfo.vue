@@ -38,6 +38,7 @@
 <script>
 /*引入修改组件标题js*/
 import { setWechatTitle, setTitleHack } from '../../kits/utils.js';
+
 	export default{
 		data(){
 			return {
@@ -74,7 +75,6 @@ import { setWechatTitle, setTitleHack } from '../../kits/utils.js';
 	/*课程图片*/
 	.img{
 		height:360px;
-		/*background-size: ;*/
 	}
 	/*课程概要*/
 	.brief-desc{

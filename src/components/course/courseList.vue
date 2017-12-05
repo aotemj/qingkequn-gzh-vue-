@@ -104,6 +104,7 @@
 	.course-title ul li span{
 		display:inline-block;
 		height:45px;
+		padding:0 12px;
 	}
 	.course-title ul li.is-selected span{
 		border-bottom:2px solid #FF9800;

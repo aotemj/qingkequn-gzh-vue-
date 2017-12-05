@@ -4,8 +4,6 @@ const setWechatTitle = function(title) {
     if (/iphone|ipad|ipod/.test(mobile)) {
         let iframe = document.createElement('iframe');
         iframe.style.visibility = 'hidden';
-        // 替换成站标favicon路径或者任意存在的较小的图片即可
-        // iframe.setAttribute('src', '//m.baidu.com/favicon.ico');
         let iframeCallback = function() {
             setTimeout(function() {
                 iframe.removeEventListener('load', iframeCallback)
