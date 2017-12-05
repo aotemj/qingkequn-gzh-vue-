@@ -59,3 +59,10 @@ ul,li{
 .mui-table-view-cell:after{
 	left:0;
 }
+/*课程标题*/
+.course-name{
+	font-size: 16px;
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}

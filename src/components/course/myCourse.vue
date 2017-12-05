@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<!-- 我的课桌(mint-ui) -->
+		<!-- 我的课桌 -->
 		<div class="course">
 			<!-- 表头 -->
 			<div class="myCourseTitle">
@@ -14,10 +14,10 @@
 			<div class="course-list">
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell mui-media" v-for="item in courseList">
-						<router-link to="/course/courseInfo">
+						<router-link class="learning-link" to="/course/courseInfo">
 							<img class="mui-media-object mui-pull-left" src="../../../statics/imgs/course01.jpg">
 							<div class="mui-media-body">
-								<p class="course-name">{{item.courseName}}</p>
+								<div class="course-name">{{item.courseName}}</div>
 								<span class="author">{{item.author}}</span>
 								<div class="learn">
 									<span class="date">2017-11-29</span>
@@ -47,15 +47,15 @@
 				],
 				courseList:[
 					{
-						courseName:'卓有成效的管理者-第六章第...',
+						courseName:'卓有成效的管理者-第六章第第六章第第六章第第六章第第六章第...',
 						author:'包政'
 					},
 					{
-						courseName:'卓有成效的管理者-第六章第...',
+						courseName:'卓有成效的管理者-第六章第六章六章六章六章',
 						author:'包政'
 					},
 					{
-						courseName:'卓有成效的管理者-第六章第...',
+						courseName:'卓有成效的管理者-第六章第六章六章六章',
 						author:'包政'
 					}
 				]
@@ -100,21 +100,7 @@
 	color:#ff9800;
 }
 
-/*navbar选中样式*/
-.mint-navbar .mint-tab-item.is-selected{
-	border-bottom:1px solid #E3E3E3;
-	font-size:14px;
-}
-.navbar{
-	font-size: 14px;
-	display:inline-block;
-	height:100%;
-	line-height: 50px;
-	padding:0 10px;
-}
-.mint-navbar .mint-tab-item.is-selected .navbar{
-	border-bottom:2px solid #FF9800;
-}
+
 /*课程列表 div*/
 .mui-table-view-cell:after{
 	left:0px;
@@ -127,14 +113,21 @@
 	max-width: 200px;
 	height:2.133333333333333rem;/*80px*/
 }
+.mui-media-body{
+	position: relative;
+}
 /*作者*/
 .author{
+	position: absolute;
+	display:inline-block;
+	margin-top:10px;
 	color:#969696;
 }
 /*去听课 div*/
 .learn{
 	padding:0;
 	box-sizing: border-box;
+	margin-top:16px;
 }
 /*购买日期*/
 .date{
@@ -144,8 +137,9 @@
 }
 /*听课按钮*/
 .learn-btn{
-	width:85px;
-	height:30px;
+	width:2.21334rem;
+	height:.7467rem;
+	line-height: 15px;
 	border-radius:30px;
 	background-color: #8BC34A;
 	color:#fff;

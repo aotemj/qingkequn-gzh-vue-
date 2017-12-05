@@ -51,19 +51,19 @@
 				courseList:[
 					{
 						id:1,
-						courseName:'卓有成效的管理者-第六章第理者-第六章...',
+						courseName:'卓有成效的管理者-第六章第理者-第六章-第六章效的管效的管效的管',
 						author:'包政',
 						price:365.00
 					},
 					{
 						id:2,
-						courseName:'卓有成效的管理者-第六章第...',
+						courseName:'卓有成效的管理者-第六章第-第六章-第六章-第六章效的管效的管效的管',
 						author:'包政',
 						price:365.00
 					},
 					{
 						id:3,
-						courseName:'卓有成效的管理者-第六章第...',
+						courseName:'卓有成效的管理者-第六章第-第六章-第六章-第六章效的管效的管效的管',
 						author:'包政',
 						price:365.00
 					}
@@ -141,8 +141,8 @@
 }
 /*购买按钮*/
 .buy-btn{
-	width:85px;
-	height:30px;
+	width:2.21334rem;
+	height:.7467rem;
 	border-radius:30px;
 	background-color: #FF9800;
 	color:#fff;
