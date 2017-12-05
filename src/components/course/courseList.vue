@@ -1,13 +1,13 @@
 <template>
 	<div>
-		<!-- 课程详情(mint-ui) -->
+		<!-- 课程详情 -->
 		<div class="course">
-			<mt-navbar v-model="selected">
-			  <mt-tab-item id="1"><a class="navbar is-selected" href="#">全部</a></mt-tab-item>
-			  <mt-tab-item id="2"><a class="navbar" href="#">精读</a></mt-tab-item>
-			  <mt-tab-item id="3"><a class="navbar" href="#">实践</a></mt-tab-item>
-			</mt-navbar>
-
+			<div class="course-title">
+				<!-- 表头 -->
+				<ul>
+					<li v-for="(item,index) in courseTitleList" v-bind:class="{'is-selected':item.status}" v-on:click="checked(index)"><span>{{item.title}}</span></li>
+				</ul>
+			</div>
 			<!-- 课程列表 -->
 			<div class="course-list">
 				<ul class="mui-table-view">
@@ -36,11 +36,24 @@ import {vm} from "../../kits/vm.js";
 	export default{
 		data(){
 			return {
-				selected:true,
+				courseTitleList:[
+					{
+						"title":"全部",
+						"status":true
+					},
+					{
+						"title":"精读",
+						"status":false
+					},
+					{
+						"title":"实践",
+						"status":false
+					}
+				],
 				courseList:[
 					{
 						id:1,
-						courseName:'卓有成效的管理者-第六章第...',
+						courseName:'卓有成效的管理者-第六章第理者-第六章...',
 						author:'包政',
 						price:365.00
 					},
@@ -60,10 +73,13 @@ import {vm} from "../../kits/vm.js";
 			}
 		},
 		methods:{
-			// sendCourseId(id){
-			// 	var id = id;
-			// 	vm.$emit('transfer',id);
-			// }
+			//表头
+			checked(id){
+				this.courseTitleList.forEach((item)=>{
+					item.status=false;
+				});
+				this.courseTitleList[id].status=true;
+			}
 		},
 		created(){
 		},
@@ -72,21 +88,31 @@ import {vm} from "../../kits/vm.js";
 	}
 </script>
 <style scoped>
-/*navbar选中样式*/
-.mint-navbar .mint-tab-item.is-selected{
-	border-bottom:1px solid #E3E3E3;
-	font-size:14px;
-}
-.navbar{
-	font-size: 14px;
-	display:inline-block;
-	height:100%;
-	line-height: 50px;
-	padding:0 10px;
-}
-.mint-navbar .mint-tab-item.is-selected .navbar{
-	border-bottom:2px solid #FF9800;
-}
+	/*课程nav-bar*/
+	.course-title{
+		height:45px;
+		background-color: #fff;
+		width:100%;
+	}
+	.course-title ul li{
+		float: left;
+		width:33.3%;
+		border-bottom:1px solid #E3E3E3;
+		text-align: center;
+		height:45px;
+		line-height: 45px;
+		font-size:14px;
+	}
+	.course-title ul li span{
+		display:inline-block;
+		height:45px;
+	}
+	.course-title ul li.is-selected span{
+
+		border-bottom:2px solid #FF9800;
+		color:#FF9800;
+	}
+
 /*课程列表 div*/
 .mui-table-view-cell:after{
 	left:0px;
