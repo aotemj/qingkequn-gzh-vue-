@@ -81,13 +81,11 @@
 	}
 	/*课程概要*/
 	.brief-desc{
-		/*height:4rem;*/
 		border:1px solid #F8F8F8;
 		padding:12px;
 		background-color: #fff;
 		position: relative;
 		padding-bottom:30px;
-		/*box-sizing: border-box;*/
 	}
 	/*标题*/
 	.brief-desc h5{
@@ -101,7 +99,6 @@
 		font-size: 12px;
 	}
 	.priceBox{
-		/*position: absolute;*/
 		bottom:10px;
 	}
 	/*图书价格*/

@@ -7,7 +7,7 @@
 		 		<!-- 每个班级的学生列表 -->
 		 		<ul v-show="subItemShow[index]" class="stuList">
 		 			<li v-for="subItem in myClassList[index].member" class="students">
-		 				<router-link v-bind="{to:'/personal/personalCenter/'+subItem.id}">
+		 				<router-link class="student" v-bind="{to:'/personal/personalCenter/'+subItem.id}">
 		 				<span class="photo" v-bind:style="{background:'url('+subItem.img+') center center',backgroundSize:'cover'}"></span>
 						<span v-text="subItem.nickname"></span><span class="job" v-text="subItem.job"></span>
 						</router-link>
@@ -388,6 +388,9 @@
 	}
 	.students:nth-of-type(1){
 		margin-top:10px;
+	}
+	.student{
+		color:#333333;
 	}
 	/*同学头像*/
 	.photo{
