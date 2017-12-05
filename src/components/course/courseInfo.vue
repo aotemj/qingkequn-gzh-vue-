@@ -36,20 +36,13 @@
 	</div>
 </template>
 <script>
-
+/*引入修改组件标题js*/
+import { setWechatTitle, setTitleHack } from '../../kits/utils.js';
 	export default{
 		data(){
 			return {
 				id:-1,
 				// 假数据
-				courseImgList:[
-					{
-
-					},
-					{
-						"img":"http://img12.360buyimg.com/n1/jfs/t1630/140/1242458373/126802/d3e978dc/55c2b196Nbde8322d.jpg"
-					}
-				],
 				bookInfo:{//图书简介
 					img:"http://img12.360buyimg.com/n1/jfs/t1630/140/1242458373/126802/d3e978dc/55c2b196Nbde8322d.jpg",
 					title:"营销的本质",
@@ -63,8 +56,11 @@
 				}
 			}
 		},
+		beforeCreate(){
+		},
 		created(){
 			this.id = this.$route.params.courseId;//获取路由参数
+			setWechatTitle(this.bookInfo.title);
 		},
 		methods:{},
 		components:{
@@ -85,7 +81,7 @@
 		padding:12px;
 		background-color: #fff;
 		position: relative;
-		padding-bottom:30px;
+		/*padding-bottom:30px;*/
 	}
 	/*标题*/
 	.brief-desc h5{

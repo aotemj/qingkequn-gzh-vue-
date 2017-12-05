@@ -27,6 +27,9 @@ Vue.use(VuePreview);
 /*引入flexible.js(rem适配)*/
 import "../statics/js/flexible.js";
 
+/*引入修改组件标题js*/
+import {setTitleHack} from './kits/utils.js';
+
 /*导入路由*/
 import courseList from "./components/course/courseList.vue";//课程列表
 import courseInfo from "./components/course/courseInfo.vue";//课程详情
@@ -41,17 +44,78 @@ import articleList from "./components/fuli/article.vue";//轻友福利文章列�
 var router = new VueRouter({
 	linkActiveClass:'mui-active',
 	routes:[
-		{path:'/',redirect:"/course/courseList"},
-		{path:'/course/courseList',component:courseList},
-		{path:'/course/courseInfo/:courseId',component:courseInfo},
-		{path:'/course/myCourse',component:myCourse},
-		{path:'/personal/personalCenter/:studentId',component:personalCenter},
-		{path:'/personal/personalInfo',component:personalInfo},
-		{path:'/personal/learningRecord',component:learningRecord},
-		{path:'/personal/myClass',component:myClass},
-		{path:'/fuli/articleList',component:articleList}
+		{
+			path:'/',redirect:"/course/courseList",
+		},
+		{
+			path:'/course/courseList',
+			component:courseList,
+			name:"全部课程",
+			meta:{
+				title:"全部课程"
+			}
+		},
+		{
+			path:'/course/courseInfo/:courseId',
+			component:courseInfo
+		},
+		{
+			path:'/course/myCourse',
+			component:myCourse,
+			name:"我的课桌",
+			meta:{
+				title:"我的课桌"
+			}
+		},
+		{
+			path:'/personal/personalCenter/:studentId',
+			component:personalCenter,
+			name:"个人中心",
+			meta:{
+				title:"个人中心"
+			}
+		},
+		{
+			path:'/personal/personalInfo',
+			component:personalInfo,
+			name:"个人信息",
+			meta:{
+				title:"个人信息"
+			}
+		},
+		{
+			path:'/personal/learningRecord',
+			component:learningRecord,
+			name:"学习记录",
+			meta:{
+				title:"学习记录"
+			}
+		},
+		{
+			path:'/personal/myClass',
+			component:myClass,
+			name:"我的班级",
+			meta:{
+				title:"我的班级"
+			}
+		},
+		{
+			path:'/fuli/articleList',
+			component:articleList,
+			name:"轻友福利",
+			meta:{
+				title:"轻友福利"
+			}
+		}
 	]
 });
+// vue中不同组件生成不同的title
+router.beforeEach((to, from, next) => {
+	if (to.meta.title) {
+	document.title = to.meta.title
+	}
+	next()
+})
 
 /*引入mint-ui*/
 import MintUi from "mint-ui";

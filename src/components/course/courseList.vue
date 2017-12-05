@@ -30,8 +30,6 @@
 	</div>
 </template>
 <script>
-// 引入中转站(非父子组件传值)
-import {vm} from "../../kits/vm.js";
 
 	export default{
 		data(){
