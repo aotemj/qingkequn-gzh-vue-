@@ -45,7 +45,7 @@ var router = new VueRouter({
 		{path:'/course/courseList',component:courseList},
 		{path:'/course/courseInfo/:courseId',component:courseInfo},
 		{path:'/course/myCourse',component:myCourse},
-		{path:'/personal/personalCenter',component:personalCenter},
+		{path:'/personal/personalCenter/:studentId',component:personalCenter},
 		{path:'/personal/personalInfo',component:personalInfo},
 		{path:'/personal/learningRecord',component:learningRecord},
 		{path:'/personal/myClass',component:myClass},

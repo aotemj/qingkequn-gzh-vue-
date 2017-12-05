@@ -1,16 +1,17 @@
 <template>
 	<div class="container">
-		<!-- 课程图片轮播 -->
-		<swipe :imgs="courseImgList"></swipe>
+		<!-- 课程图片 -->
+		<div class="img" v-bind:style="{background:'#fff url('+bookInfo.img+') no-repeat center center '}">
+
+		</div>
 		<!-- 课程概要 -->
 		<div class="brief-desc">
 			<h5>{{bookInfo.title}}</h5>
 			<p class="desc">{{bookInfo.desc}}</p>
-			<div>
+			<div class="priceBox">
 				<span class="price">&yen;{{bookInfo.price}}</span><span class="quantity">{{bookInfo.quantity}}已买</span>
 			</div>
 		</div>
-		<div>{{id}}</div>
 		<!-- 图文介绍 -->
 		<div class="introduce">
 			<h5 class="header">图文介绍</h5>
@@ -35,11 +36,6 @@
 	</div>
 </template>
 <script>
-	/*引入swipe(轮播子组件)*/
-	import swipe from "../subcom/swipe.vue";
-
-	//引入中转站(非父子组件传值)
-	import {vm} from "../../kits/vm.js";
 
 	export default{
 		data(){
@@ -48,13 +44,14 @@
 				// 假数据
 				courseImgList:[
 					{
-						"img":"http://img12.360buyimg.com/n1/jfs/t1630/140/1242458373/126802/d3e978dc/55c2b196Nbde8322d.jpg"
+
 					},
 					{
 						"img":"http://img12.360buyimg.com/n1/jfs/t1630/140/1242458373/126802/d3e978dc/55c2b196Nbde8322d.jpg"
 					}
 				],
 				bookInfo:{//图书简介
+					img:"http://img12.360buyimg.com/n1/jfs/t1630/140/1242458373/126802/d3e978dc/55c2b196Nbde8322d.jpg",
 					title:"营销的本质",
 					desc:"营销的本质是产品用户的挖掘和留存。体现在两方面：第一，一个好产品一定解决了一部分人的问题，这种问题也许是生理的、也许是心理的。",
 					price:365,
@@ -71,7 +68,6 @@
 		},
 		methods:{},
 		components:{
-			swipe
 		}
 	}
 </script>
@@ -79,12 +75,19 @@
 	.container{
 		background-color: #f4f4f4;
 	}
+	/*课程图片*/
+	.img{
+		height:360px;
+	}
 	/*课程概要*/
 	.brief-desc{
-		height:4rem;
+		/*height:4rem;*/
 		border:1px solid #F8F8F8;
 		padding:12px;
 		background-color: #fff;
+		position: relative;
+		padding-bottom:30px;
+		/*box-sizing: border-box;*/
 	}
 	/*标题*/
 	.brief-desc h5{
@@ -96,6 +99,10 @@
 		margin-top:15px;
 		color:#808080;
 		font-size: 12px;
+	}
+	.priceBox{
+		/*position: absolute;*/
+		bottom:10px;
 	}
 	/*图书价格*/
 	.price{

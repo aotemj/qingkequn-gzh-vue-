@@ -44,6 +44,7 @@
 	export default{
 		data(){
 			return {
+				id:-1,
 				personInfo:{//个人信息 假数据
 					"img":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1512047285742&di=f03172637fe163a4e8a4301297eeecfb&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F4e4a20a4462309f78cc48d2f790e0cf3d7cad667.jpg",//头像
 					"nickname":"晴天小猪",//昵称
@@ -52,7 +53,9 @@
 				}
 			}
 		},
-		created(){},
+		created(){
+			this.id=this.$route.params.studentId;
+		},
 		methods:{}
 	}
 </script>
