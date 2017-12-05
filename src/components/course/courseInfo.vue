@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<!-- 课程图片 -->
-		<div class="img" v-bind:style="{background:'#fff url('+bookInfo.img+') no-repeat center center '}">
+		<div class="img" v-bind:style="{background:'#fff url('+bookInfo.img+') no-repeat center center ',backgroundSize:'320px 320px'}">
 
 		</div>
 		<!-- 课程概要 -->
@@ -51,7 +51,7 @@ import { setWechatTitle, setTitleHack } from '../../kits/utils.js';
 					quantity:3690
 				},
 				bookIntro:{//图文介绍
-					bookDesc:"《营销的本质》是由机械工业出版社出版。包政教授十年磨一剑，颠覆科特勒营销思想，首次提出“社	区商务方式”概念。从大量销售方式，到深度分销方式，未来属于社区商务方式。",
+					bookDesc:"《营销的本质》是由机械工业出版社出版。包政教授十年磨一剑，颠覆科特勒营销思想，首次提出“社区商务方式”概念。从大量销售方式，到深度分销方式，未来属于社区商务方式。",
 					authorDesc:"包政,中国人民大学商学院教授，博士生导师，兼任清华大学经管学院EMBA教授，北京和君创业企业管理顾问有限公司总裁，管理智慧、包子堂社区创始合伙人、首席导师。一直致力于战略管理、市场营销、组织变革，指出中国企业营销的未来在于构建社区商务，以及人力资源管理等领域的研究与咨询。在中国企业管理咨询界，成就了许多著名的案例，如《华为基本法》，《TCL以速度抗击规模》等，是我国著名的企业管理咨询专家，出版专著：《营销的本质》等。"
 				}
 			}
@@ -74,6 +74,7 @@ import { setWechatTitle, setTitleHack } from '../../kits/utils.js';
 	/*课程图片*/
 	.img{
 		height:360px;
+		/*background-size: ;*/
 	}
 	/*课程概要*/
 	.brief-desc{
@@ -81,15 +82,17 @@ import { setWechatTitle, setTitleHack } from '../../kits/utils.js';
 		padding:12px;
 		background-color: #fff;
 		position: relative;
-		/*padding-bottom:30px;*/
+
 	}
 	/*标题*/
 	.brief-desc h5{
 		color:#101010;
 		font-size: 16px;
+		line-height: 25px;
 	}
 	/*简介*/
 	 .desc{
+	 	text-indent:2em;
 		margin-top:15px;
 		color:#808080;
 		font-size: 12px;

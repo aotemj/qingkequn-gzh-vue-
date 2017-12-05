@@ -30,7 +30,6 @@
 	</div>
 </template>
 <script>
-
 	export default{
 		data(){
 			return {
@@ -48,6 +47,7 @@
 						"status":false
 					}
 				],
+				//假数据
 				courseList:[
 					{
 						id:1,
@@ -106,7 +106,6 @@
 		height:45px;
 	}
 	.course-title ul li.is-selected span{
-
 		border-bottom:2px solid #FF9800;
 		color:#FF9800;
 	}
@@ -121,14 +120,20 @@
 }
 .mui-table-view .mui-media-object{
 	max-width: 200px;
-	height:2.133333333333333rem;/*80px*/
+	height:2.134rem;/*80px*/
+}
+.mui-media-body{
+	position: relative;
 }
 /*作者*/
 .author{
+	position: absolute;
+	top:.6667rem;
 	color:#969696;
 }
 /*购买 div*/
 .buy{
+	margin-top:24px;
 	padding:0;
 	box-sizing: border-box;
 }
@@ -143,11 +148,13 @@
 .buy-btn{
 	width:2.21334rem;
 	height:.7467rem;
+	line-height:25px;
 	border-radius:30px;
 	background-color: #FF9800;
 	color:#fff;
 	border:none;
 	float: right;
 	margin-top:7px;
+	padding:0;
 }
 </style>
