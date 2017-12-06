@@ -17,21 +17,11 @@
 				</li>
 				<li class="mui-table-view-cell phone-li">
 					<span v-on:click="verifyPhone" class="mui-navigate-right"><span>手机号<span class="necessary">*</span></span></span>
-					<div class="shade">
-						<div class="bind-phone-box">
-							<div class="phone-title">绑定手机</div>
-							<div class="phone-content">
-								<input class="phone-num" type="text" placeholder="请输入手机号码">
-								<div class="verify-box">
-									<input class="verify-num" type="text" placeholder="请输入验证码"><input class="verify-btn" type="button" value="获取验证码">
-								</div>
-							</div>
-							<div class="phone-submit">
-								<input type="button" value="取消">
-								<input type="button" value="确定">
-							</div>
-						</div>
+					<!-- 手机验证码 -->
+					<div class="shade" v-show="verifyShow" v-on:click="verifyPhone">
+						<phoneVerify></phoneVerify>
 					</div>
+
 				</li>
 				<li class="mui-table-view-cell">
 					<span class="mui-navigate-right"><span>性别</span></span>
@@ -53,9 +43,13 @@
 // 引入公共事件中心
 import {vm} from "../../kits/vm.js";
 
+//引入手机号验证子组件
+import phoneVerify from "../subcom/phoneVerify.vue";
+
 	export default{
 		data(){
 			return {
+				verifyShow:false,
 				tipsShow:true, //控制提示信息的显示
 				personInfo:{   //个人信息
 					"img":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1512047285742&di=f03172637fe163a4e8a4301297eeecfb&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F4e4a20a4462309f78cc48d2f790e0cf3d7cad667.jpg",//头像
@@ -75,8 +69,11 @@ import {vm} from "../../kits/vm.js";
 		methods:{
 			// 手机号验证
 			verifyPhone(){
-
-			}
+				this.verifyShow=!this.verifyShow;
+			},
+		},
+		components:{
+			phoneVerify //手机号验证子组件
 		}
 	}
 </script>
@@ -131,63 +128,103 @@ import {vm} from "../../kits/vm.js";
 	.necessary{
 		color:red !important;
 	}
-	.shade{
-		position: fixed;
-		left:0;
-		top:0;
-		width:100rem;
-		height:100rem;
-		background-color: rgba(0,0,0,.4);
-		z-index: 999;
-	}
-	/*手机号验证*/
-	.bind-phone-box{
-		color:14px;
-		padding:20px;
-		text-align: center;
-		width:9rem;
-		height:7rem;
-		background-color: #fff;
-		border-radius:10px;
-		position: fixed;
-		left:50%;
-		top:50%;
-		transform:translate(-50%,-50%);
-		z-index: 999;
-	}
-	/*绑定手机内容*/
-	.phone-content{
-		margin-top:15px;
-		padding:0;
-	}
-	.phone-content input{
-		height:30px;
-		border-radius: 5px;
-		font-size: 14px;
-		margin:0;
-	}
-	.verify-box{
-		width:100%;
-		padding:0;
-		margin-top:15px;
-	}
-	/*验证码输入框*/
-	.verify-box .verify-num{
-			width:60%;
-			display:inline-block;
+ 	/*手机号验证码*/
+.shade{
+	position: fixed;
+	left:0;
+	top:0;
+	width:100rem;
+	height:100rem;
+	background-color: rgba(0,0,0,.4);
+	z-index: 999;
+}
+手机号验证
+.bind-phone-box{
+	position: relative;
+	padding:20px;
+	text-align: center;
+	width:9rem;
+	height:5.9rem;
+	background-color: #fff;
+	border-radius:10px;
+	position: fixed;
+	left:50%;
+	top:50%;
+	transform:translate(-50%,-50%);
+	z-index: 999;
+}
+绑定手机内容
+.phone-content{
+	margin-top:15px;
+	padding:0;
+}
+.phone-content input{
+	display:block;
+	float: left;
+	height:35px;
+	border-radius: 5px;
+	font-size: 14px;
+	margin:0;
 
-	}
-	.phone-content .verify-btn{
-		margin-left:14px;
-		width:35%;
-	}
+}
+.verify-box{
+	width:100%;
+	padding:0;
+	overflow: hidden;
+	padding-top:15px;
+	background-color:#fff;
+}
+验证码输入框
+.verify-box .verify-num{
+	width:60%;
+	display:inline-block;
+}
+验证码提交按钮
+.phone-content .verify-btn{
+	margin-left:14px;
+	width:2.5rem;
+	float: right;
+	text-align: center;
+	padding:0;
+	color:;
+}
+确定提交验证码
+.phone-submit{
+	position: absolute;
+	left:0;
+	width:100%;
+	margin-top:.53rem;
+	background-color: transparent;
+	height:1.2rem;
+	border-top:1px solid #F0F0F0;
+	position: absolute;
+	bottom:0;
+}
+.phone-submit input{
+	display:block;
+	float: left;
+	width:50%;
+	height:100%;
+	background-color: transparent;
+	border:none;
+	font-size: 16px;
+}
+取消
+.phone-submit .submit-cancel{
+	border-right:1px solid #f0f0f0;
+}
+确定
+.submit-confirm{}
+
+
+
 	/*提交并付款*/
 	.buy-btn{
 		text-align: center;
 	}
 	.submit{
 		width:6.94rem;
-		height: .854rem;
+		height:.854rem;
 		background-color: #5AC449;
 		color:#fff;
 		font-size: 14px;
