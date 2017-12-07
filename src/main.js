@@ -27,6 +27,9 @@ Vue.use(VuePreview);
 /*引入flexible.js(rem适配)*/
 import "../statics/js/flexible.js";
 
+/*引入http.js(ajax请求)*/
+import "./kits/http.js";
+
 /*导入路由*/
 import courseList from "./components/course/courseList.vue";//课程列表
 import courseInfo from "./components/course/courseInfo.vue";//课程详情
@@ -119,6 +122,7 @@ import MintUi from "mint-ui";
 /*引入mint-ui样式*/
 import "../node_modules/mint-ui/lib/style.min.css";
 Vue.use(MintUi);
+
 
 /*引入mui样式*/
 import "../statics/mui/css/mui.css";

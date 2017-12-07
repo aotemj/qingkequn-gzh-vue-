@@ -16,8 +16,11 @@
 	</div>
 </template>
 <script>
-// 引入弹窗组件
-import { Toast } from 'mint-ui';
+	// 引入弹窗组件
+	import { Toast } from 'mint-ui';
+
+	// 引入http.js(ajax请求)
+	import  {getAjax} from "../../kits/http.js";
 
 	export default {
 		data(){
@@ -49,9 +52,8 @@ import { Toast } from 'mint-ui';
 
 				// 获取验证码请求
 				var url = 'http://bosstan.asuscomm.com/api/common/sendSmsCode';
-				this.$http.post(url,{username:phoneNum},{emulateJSON:true}).then((response)=>{
-					console.log(response.body);
-				});
+				this.getToken();
+
 
 			},
 			timer(){
@@ -81,9 +83,22 @@ import { Toast } from 'mint-ui';
 					console.log(response.body);
 				});
 			},
-
+			// 封装获取token方法：
+			getToken(){
+			 	var username = 'QINGKE_WX_CLIENT';//用户名
+			 	var pwd ='xSdVeRvo5k6u69NqLQY5GqBzDht8Xjv3';//密码
+			 	var url = 'http://bosstan.asuscomm.com/auth/token';
+			 	this.$http.jsonp(url,{
+			 		username:username,
+			 		password:pwd
+				},{
+			 		emulateJSON:true
+			 	}).then(function(response){
+			 		console.log(response.body.token);
+			 	});
+			},
 			fillContent(){
-				// console.log("fillContent");
+
 			}
 		}
 	}

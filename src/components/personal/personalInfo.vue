@@ -19,15 +19,20 @@
 					<span v-on:click="verifyPhone" class="mui-navigate-right"><span>手机号<span class="necessary">*</span></span></span>
 					<!-- 手机验证码 -->
 					<div class="shade" v-show="verifyShow" v-on:click="verifyPhone">
+						<!-- 手机验证码子组件 -->
 						<phoneVerify></phoneVerify>
 					</div>
-
 				</li>
 				<li class="mui-table-view-cell">
 					<span class="mui-navigate-right"><span>性别</span></span>
 				</li>
 				<li class="mui-table-view-cell">
 					<span class="mui-navigate-right"><span>生日</span></span>
+					<!-- 时间选择 -->
+					<div>
+						<!-- <datePicker></datePicker> -->
+						<button id='demo1' data-options='{}' class="btn mui-btn mui-btn-block">选择日期时间 ...</button>
+					</div>
 				</li>
 				<li class="mui-table-view-cell">
 					<span class="mui-navigate-right"><span>地址</span></span>
@@ -40,6 +45,47 @@
 	</div>
 </template>
 <script>
+(function($) {
+				$.init();
+				var result = $('#result')[0];
+				var btns = $('.btn');
+				btns.each(function(i, btn) {
+					btn.addEventListener('tap', function() {
+						var optionsJson = this.getAttribute('data-options') || '{}';
+						var options = JSON.parse(optionsJson);
+						var id = this.getAttribute('id');
+						/*
+						 * 首次显示时实例化组件
+						 * 示例为了简洁，将 options 放在了按钮的 dom 上
+						 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+						 */
+						var picker = new $.DtPicker(options);
+						picker.show(function(rs) {
+							/*
+							 * rs.value 拼合后的 value
+							 * rs.text 拼合后的 text
+							 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+							 * rs.m 月，用法同年
+							 * rs.d 日，用法同年
+							 * rs.h 时，用法同年
+							 * rs.i 分（minutes 的第二个字母），用法同年
+							 */
+							result.innerText = '选择结果: ' + rs.text;
+							/*
+							 * 返回 false 可以阻止选择框的关闭
+							 * return false;
+							 */
+							/*
+							 * 释放组件资源，释放后将将不能再操作组件
+							 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+							 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+							 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+							 */
+							picker.dispose();
+						});
+					}, false);
+				});
+			})(mui);
 // 引入公共事件中心
 import {vm} from "../../kits/vm.js";
 
@@ -73,7 +119,7 @@ import phoneVerify from "../subcom/phoneVerify.vue";
 			},
 		},
 		components:{
-			phoneVerify //手机号验证子组件
+			phoneVerify, //手机号验证子组件
 		}
 	}
 </script>
@@ -138,86 +184,6 @@ import phoneVerify from "../subcom/phoneVerify.vue";
 	background-color: rgba(0,0,0,.4);
 	z-index: 999;
 }
-手机号验证
-.bind-phone-box{
-	position: relative;
-	padding:20px;
-	text-align: center;
-	width:9rem;
-	height:5.9rem;
-	background-color: #fff;
-	border-radius:10px;
-	position: fixed;
-	left:50%;
-	top:50%;
-	transform:translate(-50%,-50%);
-	z-index: 999;
-}
-绑定手机内容
-.phone-content{
-	margin-top:15px;
-	padding:0;
-}
-.phone-content input{
-	display:block;
-	float: left;
-	height:35px;
-	border-radius: 5px;
-	font-size: 14px;
-	margin:0;
-
-}
-.verify-box{
-	width:100%;
-	padding:0;
-	overflow: hidden;
-	padding-top:15px;
-	background-color:#fff;
-}
-验证码输入框
-.verify-box .verify-num{
-	width:60%;
-	display:inline-block;
-}
-验证码提交按钮
-.phone-content .verify-btn{
-	margin-left:14px;
-	width:2.5rem;
-	float: right;
-	text-align: center;
-	padding:0;
-	color:;
-}
-确定提交验证码
-.phone-submit{
-	position: absolute;
-	left:0;
-	width:100%;
-	margin-top:.53rem;
-	background-color: transparent;
-	height:1.2rem;
-	border-top:1px solid #F0F0F0;
-	position: absolute;
-	bottom:0;
-}
-.phone-submit input{
-	display:block;
-	float: left;
-	width:50%;
-	height:100%;
-	background-color: transparent;
-	border:none;
-	font-size: 16px;
-}
-取消
-.phone-submit .submit-cancel{
-	border-right:1px solid #f0f0f0;
-}
-确定
-.submit-confirm{}
-
-
-
 	/*提交并付款*/
 	.buy-btn{
 		text-align: center;
