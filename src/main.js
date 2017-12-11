@@ -8,9 +8,18 @@ import App from "./App.vue";
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
-/*引入vue-resource*/
-import VueResource from "vue-resource";
-Vue.use(VueResource);
+/*引入新建的vuex*/
+import Vuex from 'vuex';
+Vue.use(Vuex);
+
+/*引入store*/
+import store from './store/index.js';
+
+/*引入axios*/
+import axios from "axios";
+
+ /*引入http.js(ajax请求)*/
+ import "./kits/http.js";
 
 /*引入momentjs时间格式化*/
 import moment from "moment";
@@ -20,15 +29,10 @@ Vue.filter("dateformat",function(input,dateformatStr){
 	return moment(input).format(dateformatStr);
 });
 
-/*引入vue-preview(图片预览)*/
-import VuePreview from "vue-preview";
-Vue.use(VuePreview);
-
 /*引入flexible.js(rem适配)*/
 import "../statics/js/flexible.js";
 
-/*引入http.js(ajax请求)*/
-import "./kits/http.js";
+// var bodyParser = require('body-parser');
 
 /*导入路由*/
 import courseList from "./components/course/courseList.vue";//课程列表
@@ -123,7 +127,6 @@ import MintUi from "mint-ui";
 import "../node_modules/mint-ui/lib/style.min.css";
 Vue.use(MintUi);
 
-
 /*引入mui样式*/
 import "../statics/mui/css/mui.css";
 
@@ -135,6 +138,8 @@ var vm = new Vue({
 	el:"#app",
 	data:{},
 	methods:{},
+	store,
+	axios,
 	router:router,
 	render:c=>c(App)
 });

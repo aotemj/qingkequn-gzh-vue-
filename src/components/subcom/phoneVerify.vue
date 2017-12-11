@@ -16,20 +16,26 @@
 	</div>
 </template>
 <script>
+	import Vue from 'vue';
 	// 引入弹窗组件
 	import { Toast } from 'mint-ui';
 
-	// 引入http.js(ajax请求)
-	import  {getAjax} from "../../kits/http.js";
+	//引入https
+	import {ajax} from '../../kits/http.js';
+
+	import axios from 'axios';
+	var qs = require('qs');
+	// import qs from "qs";
 
 	export default {
 		data(){
 			return {
-				phoneNum:"", //手机号
-				verifyNum:"", //验证码
-				btnContent:"获取验证码", //获取验证码按钮内文字
+				phoneNum:'', //手机号
+				verifyNum:'', //验证码
+				btnContent:'获取验证码', //获取验证码按钮内文字
 				time:0, //发送验证码间隔时间
 				disabled:false //按钮状态
+				// author:''
 			}
 		},
 		created(){
@@ -39,22 +45,28 @@
 			// 获取验证码
 			sendSmsCode(){
 				var reg=11&& /^((13|14|15|17|18)[0-9]{1}\d{8})$/;//手机号正则验证
-				var phoneNum = this.phoneNum;
+				var phoneNum = ''+this.phoneNum;
 				if(!phoneNum){//未输入手机号
-					Toast("请输入手机号码");
+					Toast('请输入手机号码');
 					return;
 				}
 				if(!reg.test(phoneNum)){//手机号不合法
-					Toast("您输入的手机号码不合法，请重新输入");
+					Toast('您输入的手机号码不合法，请重新输入');
 				}
-				this.time = 60;
+				this.time = 6;
 				this.timer();
 
 				// 获取验证码请求
-				var url = 'http://bosstan.asuscomm.com/api/common/sendSmsCode';
-				this.getToken();
+				// var url = 'http://bosstan.asuscomm.com/api/common/sendSmsCode';
+				let url = '/api/common/sendSmsCode';
 
-
+				//发送请求
+				ajax(url,'post',{ username:'18625512982'},function(res){
+					console.log(res);
+					// if(res.data.code==200){
+					// 	Toast('验证码已发送成功，5分钟内有效，请尽快完成操作！');
+					// }
+				});
 			},
 			timer(){
 				if(this.time>0){
@@ -68,38 +80,15 @@
 					this.disabled = false;
 				}
 			},
-			// 验证验证码
+			// 验证短信验证码
 			verificationCode(){
-				var phoneNum = this.phoneNum;//手机号
-				var verifyNum = this.verifyNum;//验证码
 
-				var  url = 'http://bosstan.asuscomm.com/api/common/verificationCode';
-				this.$http.post(url,{
-					username:phoneNum,
-					code:verifyNum
-				},{
-					emulateJSON:true
-				}).then((response)=>{
-					console.log(response.body);
-				});
-			},
-			// 封装获取token方法：
-			getToken(){
-			 	var username = 'QINGKE_WX_CLIENT';//用户名
-			 	var pwd ='xSdVeRvo5k6u69NqLQY5GqBzDht8Xjv3';//密码
-			 	var url = 'http://bosstan.asuscomm.com/auth/token';
-			 	this.$http.jsonp(url,{
-			 		username:username,
-			 		password:pwd
-				},{
-			 		emulateJSON:true
-			 	}).then(function(response){
-			 		console.log(response.body.token);
-			 	});
 			},
 			fillContent(){
+			},
+			computed:{
 
-			}
+	    }
 		}
 	}
 </script>

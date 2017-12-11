@@ -30,6 +30,10 @@
 	</div>
 </template>
 <script>
+
+	//引入mapState 、mapMutations:
+	import { mapState , mapMutations } from 'vuex';
+
 	export default{
 		data(){
 			return {
@@ -80,7 +84,9 @@
 			}
 		},
 		created(){
+
 		},
+		computed:{},
 		components:{
 		}
 	}
